@@ -39,7 +39,7 @@ public class HelloController {
         for (int i = 0; i < len; i++) {
             Person person = new Person();
             person.setAge(String.valueOf(RandomUtil.randomInt(0, 100))).setMale(String.valueOf(RandomUtil.randomInt(0, 2)))
-                    .setPersonalInfo(RandomUtil.randomString(100)).setUsername("test-" + RandomUtil.randomInt(0, 1000000000))
+                    .setDetail(RandomUtil.randomString(100)).setUsername("test-" + RandomUtil.randomInt(0, 1000000000))
                     .setPhoneNum("1" + RandomUtil.randomNumbers(10));
             personList.add(person);
         }

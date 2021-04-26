@@ -21,11 +21,12 @@ public class PersonDaoImpl implements PersonDao {
         return null;
     }
 
-
     @Override
-    public int addPerson() {
+    public int addPerson(Person person) {
         return 0;
     }
+
+
 
     @Override
     public void deletePerson() {

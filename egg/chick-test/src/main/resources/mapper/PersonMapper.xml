@@ -24,4 +24,9 @@
         select * from t_person;
     </select>
 
+    <insert id="addPerson" parameterType="cn.dbdj1201.egg.chick.entity.Person">
+        insert into t_person(username,nickname,age,male,detail,phoneNum)
+        values (#{username},#{nickname},#{age},#{male},#{detail},#{phoneNum});
+    </insert>
+
 </mapper>

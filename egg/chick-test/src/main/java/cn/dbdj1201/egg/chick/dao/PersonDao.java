@@ -16,7 +16,7 @@ public interface PersonDao {
 
     List<Person> getPersonList();
 
-    int addPerson();
+    int addPerson(Person person);
 
     void deletePerson();
 }

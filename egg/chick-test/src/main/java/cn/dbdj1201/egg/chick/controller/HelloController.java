@@ -1,9 +1,14 @@
 package cn.dbdj1201.egg.chick.controller;
 
+import cn.dbdj1201.egg.chick.dao.PersonDao;
 import cn.dbdj1201.egg.chick.entity.Person;
 import cn.dbdj1201.egg.chick.entity.TestObj;
+import cn.dbdj1201.egg.chick.service.IPersonService;
+import cn.dbdj1201.egg.chick.service.PersonServiceImpl;
 import cn.hutool.core.util.RandomUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +22,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
+
+    @Autowired
+    private IPersonService personService;
 
     @GetMapping("/test")
     public String testHello() {
@@ -36,14 +44,13 @@ public class HelloController {
         List<Person> personList = new ArrayList<>();
 
         int len = 10;
-        for (int i = 0; i < len; i++) {
-            Person person = new Person();
-            person.setAge(String.valueOf(RandomUtil.randomInt(0, 100))).setMale(String.valueOf(RandomUtil.randomInt(0, 2)))
-                    .setDetail(RandomUtil.randomString(100)).setUsername("test-" + RandomUtil.randomInt(0, 1000000000))
-                    .setPhoneNum("1" + RandomUtil.randomNumbers(10));
-            personList.add(person);
-        }
-        return personList;
+        return PersonServiceImpl.getPersonList(len, personList);
+    }
+
+    @GetMapping("execute/create/{times}")
+    public void execCreate(@PathVariable Long times) {
+        System.out.println("controller - " + times);
+        this.personService.addPersonTask(times);
     }
 
 }

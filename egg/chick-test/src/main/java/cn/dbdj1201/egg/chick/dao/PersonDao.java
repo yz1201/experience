@@ -1,6 +1,7 @@
 package cn.dbdj1201.egg.chick.dao;
 
 import cn.dbdj1201.egg.chick.entity.Person;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface PersonDao {
     int addPerson(Person person);
 
     void deletePerson();
+
+    List<Person> listPerson(@Param("from") Long from, @Param("to") Long to);
 }

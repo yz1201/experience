@@ -32,4 +32,9 @@ public class PersonDaoImpl implements PersonDao {
     public void deletePerson() {
 
     }
+
+    @Override
+    public List<Person> listPerson(Long page, Long size) {
+        return null;
+    }
 }

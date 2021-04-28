@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -38,5 +40,15 @@ class PersonDaoTest {
                 .setNickname("doggy-" + RandomUtil.randomString(10))
                 .setPhoneNum("1" + RandomUtil.randomNumbers(10));
         this.personDao.addPerson(person);
+    }
+
+    @Test
+    void listPerson() {
+        System.out.println("a ?");
+        List<Person> personList = this.personDao.listPerson(1L, 10L);
+        if (personList.size() > 0)
+            personList.forEach(System.out::println);
+        else
+            System.out.println("exit");
     }
 }

@@ -3,30 +3,39 @@
 <mapper namespace="cn.dbdj1201.egg.chick.dao.PersonDao">
 
     <resultMap id="BaseResultMap" type="cn.dbdj1201.egg.chick.entity.Person">
-        <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="username" jdbcType="VARCHAR" property="username" />
-        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-        <result column="age" jdbcType="INTEGER" property="age" />
-        <result column="male" jdbcType="CHAR" property="male" />
-        <result column="detail" jdbcType="VARCHAR" property="detail" />
-        <result column="phoneNum" jdbcType="CHAR" property="phoneNum" />
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="male" jdbcType="CHAR" property="male"/>
+        <result column="detail" jdbcType="VARCHAR" property="detail"/>
+        <result column="phoneNum" jdbcType="CHAR" property="phoneNum"/>
     </resultMap>
 
     <select id="getPerson" resultType="cn.dbdj1201.egg.chick.entity.Person">
-        select * from t_person where id = #{id};
+        select *
+        from t_person
+        where id = #{id};
     </select>
 
-<!--    <select id="getPersonList" resultMap="BaseResultMap">-->
-<!--        select * from t_person;-->
-<!--    </select>-->
+    <!--    <select id="getPersonList" resultMap="BaseResultMap">-->
+    <!--        select * from t_person;-->
+    <!--    </select>-->
 
     <select id="getPersonList" resultType="cn.dbdj1201.egg.chick.entity.Person">
-        select * from t_person;
+        select *
+        from t_person;
     </select>
 
     <insert id="addPerson" parameterType="cn.dbdj1201.egg.chick.entity.Person">
-        insert into t_person(username,nickname,age,male,detail,phoneNum)
-        values (#{username},#{nickname},#{age},#{male},#{detail},#{phoneNum});
+        insert into t_person(username, nickname, age, male, detail, phoneNum)
+        values (#{username}, #{nickname}, #{age}, #{male}, #{detail}, #{phoneNum});
     </insert>
 
+
+    <select id="listPerson" resultType="cn.dbdj1201.egg.chick.entity.Person">
+        select *
+        from t_person
+        limit #{from}, #{to};
+    </select>
 </mapper>

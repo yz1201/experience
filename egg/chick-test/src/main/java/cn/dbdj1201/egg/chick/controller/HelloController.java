@@ -53,4 +53,16 @@ public class HelloController {
         this.personService.addPersonTask(times);
     }
 
+    @GetMapping("/listPerson/{page}/{size}")
+    public TestObj listPerson(@PathVariable Long page
+            , @PathVariable Long size) {
+
+        TestObj testObj = new TestObj();
+        testObj.setMsg("响应成功");
+        testObj.setCode("200");
+        testObj.setPersonList(this.personService.listPersonTask(page, size));
+        return testObj;
+
+    }
+
 }

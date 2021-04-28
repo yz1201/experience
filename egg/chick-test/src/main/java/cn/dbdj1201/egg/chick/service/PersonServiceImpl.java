@@ -21,11 +21,17 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public void addPersonTask(Long times) {
-       initData(Math.toIntExact(times)).forEach(person -> this.personDao.addPerson(person));
+        initData(Math.toIntExact(times)).forEach(person -> this.personDao.addPerson(person));
 //        System.out.println(times);
 //        List<Person> personList = initData(1);
 //        System.out.println(personList);
 //        this.personDao.addPerson(personList.get(0));
+    }
+
+    @Override
+    public List<Person> listPersonTask(Long page, Long size) {
+        long from = (page - 1) * size;
+        return this.personDao.listPerson(from, size);
     }
 
     private List<Person> initData(int times) {
